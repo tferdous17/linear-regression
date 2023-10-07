@@ -21,16 +21,29 @@ def gradient_descent(m_now, b_now, points, L):
 
     for i in range(n):
         x = points.iloc[i].x
-        y = points.iloc[i]. y
+        y = points.iloc[i].y
 
         # partial derivatives
-        m_gradient += -(2/n) * x * (y - (m_now * x + b_now))
-        b_gradient += -(2/n) * (y - (m_now * x + b_now))
+        m_gradient += -(2 / n) * x * (y - (m_now * x + b_now))
+        b_gradient += -(2 / n) * (y - (m_now * x + b_now))
 
     # L = learning rate
     m = m_now - m_gradient * L
-    b = b_now * b_gradient * L
-
+    b = b_now - b_gradient * L
     return m, b
 
 
+m = 0
+b = 0
+L = 0.001
+epochs = 500 # num of iterations
+
+for i in range(epochs):
+    if i % 50 == 0:
+        print(f'epoch: {i}')
+    m, b = gradient_descent(m, b, data, L)
+
+print(m, b)
+plt.scatter(data.x, data.y, color="black")
+plt.plot(list(range(0, 100)), [m * x + b for x in range(0, 100)], color="red")
+plt.show()
