@@ -23,9 +23,11 @@ def gradient_descent(m_now, b_now, points, L):
         x = points.iloc[i].x
         y = points.iloc[i]. y
 
+        # partial derivatives
         m_gradient += -(2/n) * x * (y - (m_now * x + b_now))
         b_gradient += -(2/n) * (y - (m_now * x + b_now))
 
+    # L = learning rate
     m = m_now - m_gradient * L
     b = b_now * b_gradient * L
 
