@@ -47,3 +47,5 @@ print(m, b)
 plt.scatter(data.x, data.y, color="black")
 plt.plot(list(range(0, 100)), [m * x + b for x in range(0, 100)], color="red")
 plt.show()
+
+# note: plot not properly working, something with scalar add overflow
