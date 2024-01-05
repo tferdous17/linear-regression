@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 data = pd.read_csv('MOCK_DATA.csv')
 
-
+# mean squared error = summation[0..len(points)] (predicted val - actual val)^2
 def mean_squared_error(m, b, points):
     total_error = 0
     for i in range(len(points)):
@@ -12,7 +12,7 @@ def mean_squared_error(m, b, points):
         total_error += (y - (m * x + b)) ** 2
     total_error / float(len(points))
 
-
+# optimizes/minimizes the params m, b to achieve a low overall error (cost) for the function
 def gradient_descent(m_now, b_now, points, L):
     m_gradient = 0
     b_gradient = 0
